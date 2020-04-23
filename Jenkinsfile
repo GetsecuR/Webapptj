@@ -1,9 +1,9 @@
 Pipeline {
   agent any
   tools {
-    maven 'Maven
+    maven 'Maven'
   }
-  stages {
+  stage {
     stage (Ínitialize') {
       steps {
         sh '''
@@ -13,7 +13,9 @@ Pipeline {
        }
      }
     stages ('Build') {
-      sh 'mvn clean package'
+      steps {
+        sh 'mvn clean package'
+      }
     }
    }
  }
