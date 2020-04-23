@@ -3,7 +3,7 @@ pipeline {
   tools {
     maven 'Maven'
   }
-  stage {
+  stages {
     stage ('Ínitialize') {
       steps {
         sh '''
