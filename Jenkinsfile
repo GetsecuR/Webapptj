@@ -12,6 +12,15 @@ pipeline {
            '''
        }
      }
+    stage ('Check-Git-Secrets') {
+      steps {
+        sh 'rm trufflehogout || true'
+        sh 'docker run gesellix/trufflehog --json https://github.com/GetsecuR/Webapptj.git > trufflehogout'
+        sh 'pwd'
+        sh 'whoami'
+        sh 'cat trufflehogout'
+      }
+    }
     stage ('Build') {
       steps {
         sh 'mvn clean package'
