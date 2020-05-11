@@ -19,7 +19,7 @@ pipeline {
         sh 'pwd'
         sh 'whoami'
         sh 'echo BURP_SCAN_URL = http://15.206.122.21:8080/webapp'
-        sh 'curl --help'
+        sh 'curl -vgw "\n" -X POST 'http://192.168.0.115:8086/api/m6m9GCm6PZDj3a6DrVmc7DmioiPDs9c4/v0.1/scan' -d '{"urls":["http://15.206.122.21:8080/webapp/"]}''
         sh 'cat trufflehogout'
       }
     }
