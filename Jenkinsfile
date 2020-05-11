@@ -18,6 +18,8 @@ pipeline {
         sh 'docker run gesellix/trufflehog --json https://github.com/GetsecuR/Webapptj.git > trufflehogout'
         sh 'pwd'
         sh 'whoami'
+        sh 'echo BURP_SCAN_URL = http://15.206.122.21:8080/webapp'
+        sh 'curl --help'
         sh 'cat trufflehogout'
       }
     }
