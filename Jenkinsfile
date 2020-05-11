@@ -20,6 +20,7 @@ pipeline {
         sh 'whoami'
         sh 'echo BURP_SCAN_URL = http://15.206.122.21:8080/webapp'
         sh 'curl --help'
+        sh 'curl -vgw "\n" -X POST 'http://202.186.66.189:8086/api/m6m9GCm6PZDj3a6DrVmc7DmioiPDs9c4/v0.1/scan' -d '{"scan_configurations":[{"name":"Crawl strategy - most complete ","type":"NamedConfiguration"},{"name":"Audit Coverage - through","type":"NamedConfiguration"}],"scope":{"include":[{"rule":"http://15.206.122.21:8080/webapp/"}],"type":"SimpleScope"},"urls":["http://15.206.122.21:8080/webapp/"]}''
         sh 'cat trufflehogout'
       }
     }
