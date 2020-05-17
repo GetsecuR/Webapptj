@@ -26,9 +26,9 @@ docker run --rm \
     --volume $(pwd)/odc-reports:/report \
     owasp/dependency-check:$DC_VERSION \
     --scan /src \
-    --log /report/dc.log
+    --log /report123/dc.log
     --format "ALL" \
     --project "$DC_PROJECT" \
-    --out /report
+    --out /report12
     # Use suppression like this: (where /src == $pwd)
     # --suppression "/src/security/dependency-check-suppression.xml"
