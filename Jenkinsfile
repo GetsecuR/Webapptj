@@ -23,14 +23,11 @@ pipeline {
     }
     stage ('Source Composition Analysis') {
       steps {
-                dependencyCheck additionalArguments: ''' 
-                    -o "./" 
-                    -s "./"
-                    -f "ALL" 
-                    --prettyPrint''', odcInstallation: 'OWASP-DC'
-
-                dependencyCheckPublisher pattern: 'dependency-check-report.xml'
-            }
+         withDepedencycheck('Dependency Checker') {
+          sh 'mkdir -p build/owasp'
+          sh '--project plastinforme --scan ./ --data /home/jenkins/security/owasp-nvd/ --out build/owasp/dependency-check-report.xml --format XML'
+        }
+      }
     }
     stage ('SAST') {
       steps {
