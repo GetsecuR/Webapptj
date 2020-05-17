@@ -25,7 +25,6 @@ docker run --rm \
     owasp/dependency-check \
     --scan /src \
     --log /report/dc.log
-    --format "ALL" \
     --project "$DC_PROJECT" \
     --out /report
     # Use suppression like this: (where /src == $pwd)
