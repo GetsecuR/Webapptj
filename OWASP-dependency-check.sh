@@ -22,13 +22,8 @@ docker run --rm \
     -e user=$USER \
     -u $(id -u ${USER}):$(id -g ${USER}) \
     --volume $(pwd):/src \
-    --volume "$DATA_DIRECTORY":/usr/share/dependency-check/data \
-    --volume $(pwd)/odc-reports:/report12 \
     owasp/dependency-check:$DC_VERSION \
     --scan /src \
-    --log /report12/dc.log
-    --format "ALL" \
-    --project "$DC_PROJECT" \
-    --out /report12
+    echo "$(pwd)"
     # Use suppression like this: (where /src == $pwd)
     # --suppression "/src/security/dependency-check-suppression.xml"
