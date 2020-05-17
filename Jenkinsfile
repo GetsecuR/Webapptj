@@ -21,6 +21,17 @@ pipeline {
         sh 'cat trufflehogout'
       }
     }
+    stage ('Source Composition Analysis') {
+      steps {
+                dependencyCheck additionalArguments: ''' 
+                    -o "./" 
+                    -s "./"
+                    -f "ALL" 
+                    --prettyPrint''', odcInstallation: 'OWASP-DC'
+
+                dependencyCheckPublisher pattern: 'dependency-check-report.xml'
+            }
+    }
     stage ('SAST') {
       steps {
         withSonarQubeEnv('sonar') {
