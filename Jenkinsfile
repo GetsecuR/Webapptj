@@ -21,12 +21,15 @@ pipeline {
         sh 'cat trufflehogout'
       }
     }
-    stage ('Source Composition Analysis') {
+   stage ('Source Composition Analysis') {
       steps {
-         withDepedencycheck('Dependency Checker') {
-          sh 'mkdir -p build/owasp'
-          sh '--project plastinforme --scan ./ --data /home/jenkins/security/owasp-nvd/ --out build/owasp/dependency-check-report.xml --format XML'
-        }
+         sh 'rm OWASP* || true'
+         sh 'wget "https://raw.githubusercontent.com/GetsecuR/dvja/master/OWASP-dependency-check.sh" '
+         sh 'pwd'
+         sh 'whoami'
+         sh 'chmod +x OWASP-dependency-check.sh'
+         sh 'bash OWASP-dependency-check.sh'
+         sh 'cat /var/lib/jenkins/OWASP-Dependency-Check/reports/dependency-check-report.xml'
       }
     }
     stage ('SAST') {
