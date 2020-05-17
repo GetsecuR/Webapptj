@@ -23,10 +23,10 @@ docker run --rm \
     -u $(id -u ${USER}):$(id -g ${USER}) \
     --volume $(pwd):/src \
     --volume "$DATA_DIRECTORY":/usr/share/dependency-check/data \
-    --volume $(pwd)/odc-reports:/report \
+    --volume $(pwd)/odc-reports:/report12 \
     owasp/dependency-check:$DC_VERSION \
     --scan /src \
-    --log /report123/dc.log
+    --log /report12/dc.log
     --format "ALL" \
     --project "$DC_PROJECT" \
     --out /report12
