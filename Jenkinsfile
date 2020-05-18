@@ -21,17 +21,6 @@ pipeline {
         sh 'cat trufflehogout'
       }
     }
-   stage ('Source Composition Analysis') {
-      steps {
-         sh 'rm OWASP* || true'
-         sh 'wget "https://raw.githubusercontent.com/GetsecuR/Webapptj/master/OWASP-dependency-check.sh" '
-         sh 'pwd'
-         sh 'whoami'
-         sh 'chmod +x OWASP-dependency-check.sh'
-         sh 'bash OWASP-dependency-check.sh'
-         sh 'cat /var/lib/jenkins/OWASP-Dependency-Check/reports/dependency-check-report.xml'
-      }
-    }
     stage ('SAST') {
       steps {
         withSonarQubeEnv('sonar') {
